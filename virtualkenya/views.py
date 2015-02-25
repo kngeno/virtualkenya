@@ -7,4 +7,7 @@ def home(request):
 def info(request):
 	return render(request, 'virtualkenya/info.html')
 
+def feature(request):
+	return render(request, 'virtualkenya/feature.html')
+
 # Create your views here.

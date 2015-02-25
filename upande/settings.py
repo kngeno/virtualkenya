@@ -27,7 +27,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1',]  #Heroku app_name=virtualkenya_wms.herokuapp.com
+ALLOWED_HOSTS = ['127.0.0.1','http://maps.virtualkenya.org.']  #Heroku app_name=virtualkenya_wms.herokuapp.com
 
 # Application definition
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gunicorn',
-    'rest_framework',
+    'rest_framework',   
     #Custom App
     'virtualkenya',
 )
@@ -110,14 +110,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
 )
 
+
 #Deployment on Heroku
 
-import dj_database_url
-# Honor the 'X-Forwarded-Proto' header for request.is_secure()
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://maps.virtualkenya.org.']
 
 # Static asset configuration
 import os

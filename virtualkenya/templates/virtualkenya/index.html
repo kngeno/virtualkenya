@@ -14,24 +14,7 @@
     <link href='http://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet' type='text/css'>
     <!-- Custom CSS -->
     <link href="{% static 'virtualkenya/css/stylesheet.css' %}" rel="stylesheet">
-    <!-- GeoExt -->
-    <!-- 
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/panel/Map.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/data/FeatureStore.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/data/MapfishPrintProvider.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/grid/column/Symbolizer.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/selection/FeatureModel.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/container/WmsLegend.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/panel/Legend.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/window/Popup.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/plugins/PrintExtent.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/tree/LayerContainer.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/tree/OverlayLayerContainer.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/tree/BaseLayerContainer.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/data/LayerTreeModel.js' %}" ></script>
-    <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/geoext/src/GeoExt/Action.js' %}" ></script>
-    -->
-   
+       
     <!--Adding the GeoExt css for the popup -->
     <link href="{% static 'virtualkenya/geoext/resources/css/popup.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'virtualkenya/extjs/resources/css/ext-all-debug.css' %}"  rel="stylesheet" type="text/css">
@@ -45,7 +28,8 @@
     <script type="text/javascript" charset="utf-8" src="{% static 'virtualkenya/js/loader.js' %}"></script>
     -->
     <script type='text/javascript'>
-    OpenLayers.ProxyHost = "proxy.cgi?url=";
+    //OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=http://127.0.0.1/proxy.cgi";
+    //OpenLayers.ProxyHost = "http://127.0.0.1/cgi-bin/proxy.cgi?url= http://127.0.0.1:3000/cgi-bin/proxy.cgi";
 
     var map;
     function init() {
@@ -116,16 +100,16 @@
             layers: [turk,turksand,marsabit],
             tileOptions: {crossOriginKeyword: 'anonymous'},
             transitionEffect: null,
-            queryVisible: true,
-            
+            queryVisible: true,            
             WIDTH: map.size.w,
             HEIGHT: map.size.h,            
             styles: map.layers[1].params.STYLES,
             srs: map.layers[1].params.SRS,
-            infoFormat: "application/vnd.ogc.gml",
+            infoFormat: "text/plain",
             maxFeatures: 3,
             title: 'Identify features by clicking',
             queryVisible: true,
+            hover: true,
             eventListeners: {
                 getfeatureinfo: function(event) {
                     map.addPopup(new OpenLayers.Popup.FramedCloud(
@@ -140,24 +124,23 @@
             }
         });
                        
-        
-       
+               
         //Info: Feature
         map.addControl(info);
-        info.activate();  
+        info.activate();          
         map.addControl(new OpenLayers.Control.LayerSwitcher())
-        
-
         map.setCenter(position, zoom );
         if(!map.getCenter()){
             map.zoomToMaxExtent();
         }
-       
     }       
+       
+           
     OpenLayers.Popup.FramedCloud.prototype.maxSize = new OpenLayers.Size(350, 200);   
 
     </script>
 </head>
+{% block content%}
     <body onload='init();'>
     	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -211,4 +194,5 @@
           <p style="color: black;"><strong> VirtualKenya WMS &copy; 2015 </strong></p>
         </footer>
     </body>
+{% endblock %}
 </html>
