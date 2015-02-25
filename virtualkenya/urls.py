@@ -10,7 +10,8 @@ urlpatterns = patterns('',
 
 
 #Heroku Deployment
-
+'''
 urlpatterns += patterns('',
     (r'^' + settings.STATIC_URL[1:] + '(?P.*)$', 'django.views.static.serve',
          {'document_root': settings.STATIC_ROOT}),)
+'''

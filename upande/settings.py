@@ -113,7 +113,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 #Deployment on Heroku
-
+'''
 # Allow all host headers
 ALLOWED_HOSTS = ['http://maps.virtualkenya.org.']
 
@@ -124,7 +124,7 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'virtualkenya/static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 # Simplified static file serving.
@@ -134,3 +134,4 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
 TEMPLATE_DEBUG = DEBUG
+'''
