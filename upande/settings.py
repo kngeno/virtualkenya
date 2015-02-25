@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Django settings for upande project.
 
@@ -27,7 +28,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 
-ALLOWED_HOSTS = ['127.0.0.1','http://maps.virtualkenya.org.']  #Heroku app_name=virtualkenya_wms.herokuapp.com
+ALLOWED_HOSTS = ['127.0.0.1','http://maps.virtualkenya.org.','virtualkenya.herokuapp.com']  #Heroku app_name=virtualkenya_wms.herokuapp.com
 
 # Application definition
 
